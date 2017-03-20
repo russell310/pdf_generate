@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <style type="text/css">
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <img src="/media/logo.png" width="200px">
+            </div>
+            <div class="col-xs-6">
+                <p>ELIXEUR | Invoice for {{ value.company.name }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>invoice</h1>
+                <p> #{{ value.invoice_id }} </p>
+            </div>
+            <div class="col-xs-6">
+                <p>Invoice due date: {{ value.date }} </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <h4>from</h4>
+                <h3>elixeur</h3>
+                <p>18/1, Naya Paltan, Dhaka-1000</p>
+                <p>
+                    <strong>p</strong> +880 197 354 9387
+                    <strong>e</strong> gettoknow@elixeur.com
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <h4>issued to:</h4>
+                <h3>{{ value.company.name }}</h3>
+                <p>{{ value.address }}</p>
+                <p>
+                    <strong>p</strong> {{ value.phone }}
+                    <strong>e</strong> {{ value.email }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <p>
+                    <strong>project ref:</strong> #{{ value.reference }}
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <p>
+                    <strong>date issued:</strong> {{ value.date }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>item details</th>
+                        <th>paid</th>
+                        <th>net payable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for projects in value.project.all %}
+                    <tr>
+                        <td>
+                            {{ projects.description }} <br>
+                            {{ projects.details }}
+                        </td>
+                        <td>
+                            {{ projects.paid }}
+                        </td>
+                        <td>
+                            {{ projects.payable }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-8 well">
+                <p>
+                    <strong>sub total:</strong>
+                    {{ subtotal }} bdt
+                </p>
+                <p>
+                    <strong>vat:</strong>
+                    5 %
+                </p>
+                <p>
+                    <strong>total:</strong>
+                    {{ total }} bdt
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-center"> <strong>terms:</strong> 07 days from issuance </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-3">
+                <p>Thank you for your business - Please make all cheques payable to</p>
+                <div class="col-xs-9 col-xs-offset-3">
+                    <p>elixeur</p>
+                    <p>bank: pubali bank ltd.</p>
+                    <p>branch: nayapaltan</p>
+                    <p>Account No.: 2438901043207</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+</body>
+</html>
