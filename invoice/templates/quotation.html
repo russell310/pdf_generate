@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Invoice</title>
+    <title>Quotation</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -150,7 +150,7 @@
                     <h3><strong>{{ value.company.name }}</strong></h3>
                     <h4>{{ value.address }}</h4>
                     <p>
-                        <strong>P-</strong> {{ value.phone }}
+                        <strong>P/F-</strong> {{ value.phone }}&nbsp;&nbsp;
                         <strong>E-</strong> {{ value.email }}
                     </p>
                 </div>
