@@ -1,42 +1,136 @@
 /*invoice*/
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+table {
+    width: 100%;
+}
+
 .in-header {
     margin-top: 100px;
 }
+
 .in-company {
     text-align: right;
     padding-top: 10px;
 }
+
 .in-company p {
     font-size: 18px;
 }
+
 .in-state {
-   margin-top: 50px;
+    margin-top: 50px;
 }
+
 .in-due {
     background: #000;
     color: #fff;
 }
+
 .in-due p {
-     font-size: 20px;
+    font-size: 20px;
     font-weight: bold;
     line-height: 45px;
     padding-top: 9px;
 }
+
 .in-id p {
     font-size: 20px;
 }
+
 .in-id h1 {
     font-size: 50px;
     color: #231F20;
     text-transform: uppercase;
 }
+
 .in-form {
     margin-top: 50px;
 }
+
 .in-form h4 {
-     padding: 12px 20px;
+    padding: 12px 20px;
     background: #cccccc;
     font-weight: 700;
     color: #000;
     font-size: 20px;
+}
+
+.in-due {
+    margin-top: 30px;
+}
+
+.in-form h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.in-form p {
+    font-size: 18px;
+}
+
+.reference p {
+    font-size: 18px;
+}
+
+.invoice-company {
+    padding: 20px 0 50px 0;
+}
+
+.invoice-frm {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 30px;
+}
+
+.main-table thead tr {
+    background-color: #000;
+    color: #fff;
+}
+
+.main-table thead tr th {
+    font-size: 18px;
+    text-transform: capitalize;
+    border-right: 1px solid #c0c0c0;
+}
+
+.main-table tbody tr td {
+    font-size: 18px;
+    border-right: 1px solid #c0c0c0;
+}
+
+.main-table thead tr th:last-child,
+.main-table tbody tr td:last-child {
+    border: none;
+}
+
+.invoice-calculation p {
+    font-size: 18px;
+}
+
+.terms {
+    margin-top: 30px;
+}
+
+.terms-content {
+    background-color: #000;
+}
+
+.terms-content p {
+    padding: 20px 0 10px 0;
+    font-size: 20px;
+    color: #fff;
+}
+
+.footer {
+    margin-top: 50px;
+}
+
+.footer p {
+    font-size: 18px;
+}
+
+.elx-acc {
+    text-transform: capitalize;
 }
