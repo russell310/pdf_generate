@@ -17,13 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from invoice.views import invoice_pdf, quotation_pdf
+from invoice.views import invoice_pdf, quotation_pdf, inv
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^inv/$', inv, name='invoice_pdf'),
     url(r'^invoice/$', invoice_pdf, name='invoice_pdf'),
     url(r'^quotation/$', quotation_pdf, name='quotation_pdf'),
-] 
+]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

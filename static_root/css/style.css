@@ -1,0 +1,42 @@
+/*invoice*/
+.in-header {
+    margin-top: 100px;
+}
+.in-company {
+    text-align: right;
+    padding-top: 10px;
+}
+.in-company p {
+    font-size: 18px;
+}
+.in-state {
+   margin-top: 50px;
+}
+.in-due {
+    background: #000;
+    color: #fff;
+}
+.in-due p {
+     font-size: 20px;
+    font-weight: bold;
+    line-height: 45px;
+    padding-top: 9px;
+}
+.in-id p {
+    font-size: 20px;
+}
+.in-id h1 {
+    font-size: 50px;
+    color: #231F20;
+    text-transform: uppercase;
+}
+.in-form {
+    margin-top: 50px;
+}
+.in-form h4 {
+     padding: 12px 20px;
+    background: #cccccc;
+    font-weight: 700;
+    color: #000;
+    font-size: 20px;
+}

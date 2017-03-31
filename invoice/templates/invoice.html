@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title>Invoice</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <style type="text/css">
         *{
             font-family: 'Open Sans', sans-serif;
@@ -14,16 +14,76 @@
         table{
             width: 100%;
         }
+        .in-due {
+            margin-top: 30px;
+         }
+        .in-form h3 {
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .in-form p {
+            font-size: 18px;
+        }
+        .reference p {
+            font-size: 18px;
+        }
+        .invoice-company {
+            padding: 20px 0 50px 0;
+        }
+        .invoice-frm {
+            border-bottom: 1px solid #c0c0c0;
+            padding-bottom: 30px;
+        }
+        .main-table thead tr {
+            background-color: #000;
+            color: #fff;
+        }
+        .main-table thead tr th {
+            font-size: 18px;
+            text-transform: capitalize;
+            border-right: 1px solid #c0c0c0;
+        }
+        .main-table tbody tr td {
+            font-size: 18px;
+            border-right: 1px solid #c0c0c0;
+        }
+        .main-table thead tr th:last-child,
+        .main-table tbody tr td:last-child {
+            border: none;
+        }
+        .invoice-calculation p {
+            font-size: 18px;
+        }
+        .terms {
+            margin-top: 30px;
+        }
+        .terms-content {
+            background-color: #000;
+        }
+        .terms-content p {
+            padding: 20px 0 10px 0;
+            font-size: 20px;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 50px;
+        }
+        .footer p {
+            font-size: 18px;
+        }
+        .elx-acc {
+             text-transform: capitalize;
+        }
     </style>
 </head>
 <body>
 <section class="">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row in-header">
             <div class="col-xs-6">
                 <img src="/media/logo.png" width="200px">
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6 in-company">
                 <p>ELIXEUR | Invoice for {{ value.company.name }}</p>
             </div>
         </div>
@@ -32,28 +92,28 @@
 
 <section class="">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-6">
+        <div class="row in-state">
+            <div class="col-xs-6 in-id">
                 <h1>invoice</h1>
                 <p> #{{ value.invoice_id }} </p>
             </div>
-            <div class="col-xs-6">
-                <p>Invoice due date: {{ value.date }} </p>
+            <div class="col-xs-6 in-due">
+                <p>Invoice due date: <i> {{ value.date }} </i> </p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="">
+<section class="invoice-frm">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row in-form">
             <div class="col-xs-6">
                 <h4>from</h4>
                 <h3>elixeur</h3>
                 <p>18/1, Naya Paltan, Dhaka-1000</p>
                 <p>
-                    <strong>p</strong> +880 197 354 9387
-                    <strong>e</strong> gettoknow@elixeur.com
+                    <strong>P</strong> +880 197 354 9387
+                    <strong>E</strong> gettoknow@elixeur.com
                 </p>
             </div>
             <div class="col-xs-6">
@@ -61,8 +121,8 @@
                 <h3>{{ value.company.name }}</h3>
                 <p>{{ value.address }}</p>
                 <p>
-                    <strong>p</strong> {{ value.phone }}
-                    <strong>e</strong> {{ value.email }}
+                    <strong>P</strong> {{ value.phone }}
+                    <strong>E</strong> {{ value.email }}
                 </p>
             </div>
         </div>
@@ -70,17 +130,17 @@
 </section>
 
 
-<section class="">
+<section class="invoice-company">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row reference">
             <div class="col-xs-6">
                 <p>
-                    <strong>project ref:</strong> #{{ value.reference }}
+                    <strong>Project ref:</strong> #{{ value.reference }}
                 </p>
             </div>
             <div class="col-xs-6">
                 <p>
-                    <strong>date issued:</strong> {{ value.date }}
+                    <strong>Date issued:</strong> {{ value.date }}
                 </p>
             </div>
         </div>
@@ -88,7 +148,7 @@
 </section>
 
 
-<section class="">
+<section class="main-table">
     <div class="container-fluid">
         <div class="row">
             <table class="table table-striped">
@@ -122,20 +182,20 @@
 
 
 
-<section class="">
+<section class="invoice-calculation">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 col-xs-offset-8 well">
                 <p>
-                    <strong>sub total:</strong>
+                    <strong>Sub Total:</strong>
                     {{ subtotal }} bdt
                 </p>
                 <p>
-                    <strong>vat:</strong>
+                    <strong>Vat:</strong>
                     5 %
                 </p>
                 <p>
-                    <strong>total:</strong>
+                    <strong>Total:</strong>
                     {{ total }} bdt
                 </p>
             </div>
@@ -144,12 +204,11 @@
 </section>
 
 
-
-<section class="">
+<section class="terms">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row terms-content">
             <div class="col-xs-12">
-                <p class="text-center"> <strong>terms:</strong> 07 days from issuance </p>
+                <p class="text-center"> <strong>Terms:</strong> <i>07 days from issuance</i> </p>
             </div>
         </div>
     </div>
@@ -157,13 +216,14 @@
 
 
 
-<section class="">
+<section class="footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-3">
                 <p>Thank you for your business - Please make all cheques payable to</p>
-                <div class="col-xs-9 col-xs-offset-3">
-                    <p>elixeur</p>
+                <div class="col-xs-9 col-xs-offset-3 elx-acc">
+                    <br>
+                    <p>ELIXEUR</p>
                     <p>bank: pubali bank ltd.</p>
                     <p>branch: nayapaltan</p>
                     <p>Account No.: 2438901043207</p>
