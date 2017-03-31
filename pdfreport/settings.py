@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
 WKHTMLTOPDF_CMD_OPTIONS = {
     'disable-javascript': True,
+    # 'margin-top': 0,
+    # 'margin-left': 0,
+    # 'margin-right': 0,
 }
 
 MIDDLEWARE = [

@@ -17,11 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from invoice.views import invoice_pdf, quotation_pdf, inv
+from invoice.views import invoice_pdf, quotation_pdf, inv, qtn
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^inv/$', inv, name='invoice_pdf'),
+    url(r'^qtn/$', qtn, name='quotation_pdf'),
     url(r'^invoice/$', invoice_pdf, name='invoice_pdf'),
     url(r'^quotation/$', quotation_pdf, name='quotation_pdf'),
 ]
