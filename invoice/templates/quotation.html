@@ -118,6 +118,11 @@
         .left-tble .panel-body {
             text-transform: capitalize;
         }
+        th:first-child,
+        td:first-child {
+            width: 85%;
+        }
+
     </style>
 </head>
 <body>
@@ -177,7 +182,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Item details</th>
+                        <th>Project Proposal </th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -197,7 +202,7 @@
                         <td>
                             <strong>Total:</strong>
                         </td>
-                        <td>{{ total }} BDT</td>
+                        <td>{{ total }}</td>
                     </tr>
                     </tbody>
                 </table>

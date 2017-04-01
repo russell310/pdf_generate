@@ -4,10 +4,189 @@
 <head>
     <meta charset="utf-8">
     <title>Invoice</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
 
+        table {
+            width: 100%;
+        }
+
+        /*invoice*/
+        .in-header {
+            margin-top: 100px;
+        }
+
+        .in-company {
+            text-align: right;
+            padding-top: 10px;
+        }
+
+        .in-company p {
+            font-size: 14px;
+        }
+
+        .in-state {
+            margin-top: 50px;
+        }
+
+        .in-due {
+            background: #000;
+            color: #fff;
+        }
+
+        .in-due p {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 34px;
+            padding-top: 9px;
+        }
+
+        .in-id p {
+            font-size: 18px;
+        }
+
+        .in-id h1 {
+            font-size: 40px;
+            color: #231F20;
+            text-transform: uppercase;
+        }
+
+        .in-form {
+            margin-top: 50px;
+        }
+
+        .in-form h4 {
+            padding: 12px 20px;
+            background: #cccccc;
+            font-weight: 700;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .in-due {
+            margin-top: 30px;
+        }
+
+        .in-issu {
+            padding: 0;
+        }
+
+        .in-form h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .in-form p {
+            font-size: 16px;
+        }
+
+        .reference p {
+            font-size: 16px;
+        }
+
+        .invoice-company {
+            padding: 12px 0 2px 0;
+        }
+
+        .invoice-frm {
+            border-bottom: 1px solid #c0c0c0;
+            padding-bottom: 10px;
+        }
+
+        .main-table thead tr {
+            background-color: #000;
+            color: #fff;
+            border-bottom: none;
+        }
+
+        .main-table thead tr th {
+            font-size: 18px;
+            text-transform: capitalize;
+            border-right: 1px solid #c0c0c0;
+        }
+
+        .main-table tbody tr td {
+            font-size: 16px;
+            border-right: 1px solid #c0c0c0;
+        }
+
+        .main-table thead tr th:last-child,
+        .main-table tbody tr td:last-child {
+            border-right: none;
+        }
+
+        .invoice-calculation p {
+            font-size: 16px;
+        }
+
+        .terms {
+            margin-top: 30px;
+        }
+
+        .terms-content {
+            background-color: #000;
+        }
+
+        .terms-content p {
+            padding: 14px 0 4px 0;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .tk-formate {
+            position: relative;
+        }
+
+        .tk-formate h3 {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 16px;
+            position: absolute;
+            top: 72px;
+        }
+
+        .footer {
+            margin-top: 50px;
+        }
+
+        .footer p {
+            font-size: 18px;
+            line-height: 14px;
+        }
+
+        .footer h5 {
+            font-size: 16px;
+        }
+
+        .elx-acc {
+            text-transform: capitalize;
+        }
+
+        .table > thead > tr > th,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > td {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .table > tbody > tr:last-child {
+            border-bottom: 1px solid #c0c0c0;
+        }
+        .invoice-calculation {
+            padding-top: 20px;
+        }
+        .elx-acc {
+            margin-left: 48%;
+        }
+    </style>
 </head>
 <body>
 <section class="">
@@ -31,7 +210,7 @@
                 <p> #{{ value.invoice_id }} </p>
             </div>
             <div class="col-xs-6 in-due">
-                <p>Invoice due date: <i> {{ value.date }} </i> </p>
+                <p>Invoice due date: <i> {{ value.date }} </i></p>
             </div>
         </div>
     </div>
@@ -41,21 +220,21 @@
     <div class="container-fluid">
         <div class="row in-form">
             <div class="col-xs-6">
-                <h4>from</h4>
-                <h3>elixeur</h3>
+                <h4>From</h4>
+                <h3><strong>elixeur</strong></h3>
                 <p>18/1, Naya Paltan, Dhaka-1000</p>
                 <p>
-                    <strong>P-</strong>&nbsp; 0 197 354 9387 &nbsp;
-                    <strong>E-</strong> gettoknow@elixeur.com
+                    <strong>P</strong>&nbsp; 0 197 354 9387 &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>E</strong> gettoknow@elixeur.com
                 </p>
             </div>
-            <div class="col-xs-6">
-                <h4>issued to:</h4>
-                <h3>{{ value.company.name }}</h3>
+            <div class="col-xs-6 in-issu">
+                <h4>Issued to:</h4>
+                <h3><strong>{{ value.company.name }}</strong></h3>
                 <p>{{ value.address }}</p>
                 <p>
-                    <strong>P-</strong> {{ value.phone }}&nbsp;&nbsp;
-                    <strong>E-</strong> {{ value.email }}
+                    <strong>P</strong> {{ value.phone }}&nbsp;&nbsp;&nbsp;
+                    <strong>E</strong> {{ value.email }}
                 </p>
             </div>
         </div>
@@ -86,14 +265,14 @@
         <div class="row">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>item details</th>
-                        <th>paid</th>
-                        <th>net payable</th>
-                    </tr>
+                <tr>
+                    <th>item details</th>
+                    <th>paid</th>
+                    <th>net payable</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for projects in value.project.all %}
+                {% for projects in value.project.all %}
                     <tr>
                         <td>
                             {{ projects.description }} <br>
@@ -106,7 +285,7 @@
                             {{ projects.payable }}
                         </td>
                     </tr>
-                    {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -114,14 +293,18 @@
 </section>
 
 
-
 <section class="invoice-calculation">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 col-xs-offset-8 well">
+            <div class="col-xs-8">
+                <div class="tk-formate">
+                    <h3>All prices are in Bangladesh taka(bdt)</h3>
+                </div>
+            </div>
+            <div class="col-xs-4 well">
                 <p>
                     <strong>Sub Total:</strong>
-                    {{ subtotal }} BDT
+                    {{ subtotal }}
                 </p>
                 <p>
                     <strong>Vat:</strong>
@@ -129,7 +312,7 @@
                 </p>
                 <p>
                     <strong>Total:</strong>
-                    {{ total }} BDT
+                    {{ total }}
                 </p>
             </div>
         </div>
@@ -141,20 +324,19 @@
     <div class="container-fluid">
         <div class="row terms-content">
             <div class="col-xs-12">
-                <p class="text-center"> <strong>Terms:</strong> <i>07 days from issuance</i> </p>
+                <p class="text-center"><strong>Terms:</strong> <i>07 days from issuance</i></p>
             </div>
         </div>
     </div>
 </section>
 
 
-
 <section class="footer">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-3">
-                <p>Thank you for your business - Please make all cheques payable to</p>
-                <div class="col-xs-9 col-xs-offset-3 elx-acc">
+            <div class="col-xs-12" >
+                <h4 style="text-align: center">Thank you for your business - Please make all cheques payable to</h4>
+                <div class="col-xs-6 elx-acc">
                     <br>
                     <p>ELIXEUR</p>
                     <p>bank: pubali bank ltd.</p>
@@ -165,7 +347,6 @@
         </div>
     </div>
 </section>
-
 
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
